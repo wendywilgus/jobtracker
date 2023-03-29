@@ -1,3 +1,4 @@
+import cors from 'cors';
 import Express from 'express';
 const app = Express();
 import dotenv from 'dotenv';
@@ -16,11 +17,14 @@ import notFoundMiddleware from './middleware/not_found.js';
 import errorHandlerMiddleware from './middleware/error_handler.js';
 // import { start } from 'repl';
 
+app.use(cors());
 app.use(Express.json());
 
 app.get(`/`, (req,res) => {
-    // throw new Error('error')
-    res.send('Welcome!')
+    res.json({ msg:'Welcome!' })
+})
+app.get(`/api/vi`, (req,res) => {
+    res.json({ msg:'Welcome!' })
 })
 
 app.use('/api/v1/auth', authRouter);

@@ -1,5 +1,5 @@
 {
-  "name": "project3",
+  "name": "Ready2Work",
   "version": "0.1.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
@@ -9,8 +9,10 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.3.4",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express-async-errors": "^3.1.1",
     "history": "^5.3.0",
@@ -27,12 +29,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "server": "nodemon server",
+    "install-dependencies": "npm run install-client && npm install",
+    "setup-production": "npm run install-client && npm run build-client && npm install",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "server": "nodemon server --ignore client",
     "client": "npm start --prefix client",
-    "start": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
   },
   "eslintConfig": {
     "extends": [
